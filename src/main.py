@@ -17,25 +17,6 @@ def health_check_handler():
     return {"ping": "pong"}
 
 
-# todo_data = {
-#     1: {
-#         "id": 1,
-#         "contents": "1일차 운동하기",
-#         "is_done": True,
-#     },
-#     2: {
-#         "id": 2,
-#         "contents": "2일차 운동하기",
-#         "is_done": False,
-#     },
-#     3: {
-#         "id": 3,
-#         "contents": "3일차 운동하기",
-#         "is_done": False,
-#     }
-# }
-
-
 @app.get("/todos", status_code=200)
 def get_todos_handler(
     order: str | None = None,
@@ -68,7 +49,6 @@ def create_todo_handler(
     session: Session = Depends(get_db)
 ) -> ToDoSchema:
     todo: ToDo = ToDo.create(request=request)  # id=None
-    print("!", todo)
     todo: ToDo = create_todo(session=session, todo=todo)  # id:int
     return ToDoSchema.from_orm(todo)
 
