@@ -42,5 +42,5 @@ class UserRepository:
     def save_user(self, user: User) -> User:
         self.session.add(instance=user)
         self.session.commit()  # db save
-        self.session.refresh(instance=user)  # db read -> todo_id
+        self.session.refresh(instance=user)  # db read
         return user

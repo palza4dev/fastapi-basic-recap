@@ -1,9 +1,7 @@
 from typing import List
 
 from fastapi import Depends, HTTPException, Body, APIRouter
-from sqlalchemy.orm import Session
 
-from database.connection import get_db
 from database.orm import ToDo
 from database.repository import ToDoRepository
 from schema.request import CreateToDoRequest

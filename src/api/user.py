@@ -20,6 +20,6 @@ def user_sign_up_handler(
     )
     user: User = User.create(
         username=request.username, hashed_password=hashed_password
-    )
+    )  # id=None
     user: User = user_repository.save_user(user=user)  # id=int
     return UserSchema.from_orm(user)
