@@ -19,10 +19,7 @@ class ToDo(Base):
 
     @classmethod
     def create(cls, request: CreateToDoRequest):
-        return cls(
-            contents=request.contents,
-            is_done=request.is_done
-        )
+        return cls(contents=request.contents, is_done=request.is_done)
 
     def done(self) -> "ToDo":
         self.is_done = True
@@ -43,7 +40,4 @@ class User(Base):
 
     @classmethod
     def create(cls, username: str, hashed_password: str) -> "User":
-        return cls(
-            username=username,
-            password=hashed_password
-        )
+        return cls(username=username, password=hashed_password)
