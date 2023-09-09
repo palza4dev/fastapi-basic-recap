@@ -14,7 +14,7 @@ def user_sign_up_handler(
     request: SignUpRequest,
     user_service: UserService = Depends(),
     user_repository: UserRepository = Depends(),
-):
+) -> UserSchema:
     hashed_password: str = user_service.hash_password(plain_password=request.password)
     user: User = User.create(
         username=request.username, hashed_password=hashed_password
@@ -28,7 +28,7 @@ def user_log_in_handler(
     request: LogInRequest,
     user_repository: UserRepository = Depends(),
     user_service: UserService = Depends(),
-):
+) -> JWTResponse:
     user: User | None = user_repository.get_user_by_username(username=request.username)
     if not user:
         raise HTTPException(status_code=404, detail="User not found")
